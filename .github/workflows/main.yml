@@ -1,19 +1,23 @@
 name: Stick-Translate
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Permite el encendido manual que GitHub recomienda para móvil
 
 jobs:
-  translate:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: ashishb/android-auto-translate@master
+      - name: Checkout
+        uses: actions/checkout@v4 # Versión más reciente y estable
+
+      - name: Auto Translate
+        uses: ashishb/android-auto-translate@master
         with:
-          args: es
-      - name: Save
+          args: es # Comando oficial para traducir al español
+
+      - name: Commit and Push
         run: |
-          git config --local user.email "action@github.com"
+          git config --local user.email "stick-bot@github.com"
           git config --local user.name "Stick-Bot"
           git add .
-          git commit -m "Traducción completada" || exit 0
+          git commit -m "Stick: Traducción profesional completada" || exit 0
           git push
