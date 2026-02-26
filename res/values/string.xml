@@ -1361,4 +1361,5 @@ Mouse Binding: each time you press the hotkey, simulate a swipe from the mouse p
     <string name="wait_for_keymap_loading">Please wait several seconds for keymap loading. If this prompt continue to show after 15 seconds, please restart the app</string>
     <string name="write_file_failed">Unable to Write File</string>
     <string name="zhanying_name">\@Sandeep</string>
-</resources>
+</resources>   
+    
