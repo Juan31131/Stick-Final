@@ -1,27 +1,19 @@
-name: Auto Translate Strings
-
+name: Stick-Translate
 on:
-  push:
-    paths:
-      - 'res/values/strings.xml' # Se activa cuando subes este archivo
+  workflow_dispatch:
 
 jobs:
-  build:
+  translate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Android Auto Translate
-        uses: ashishb/android-auto-translate@master
+      - uses: actions/checkout@v3
+      - uses: ashishb/android-auto-translate@master
         with:
-          # Esto le dice que use Google Translate para crear el archivo en español
-          languages: es 
-
-      - name: Commit and push changes
+          args: es
+      - name: Save
         run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.name "Stick-Bot"
           git add .
-          git commit -m "Traducción automática de Stick" || exit 0
+          git commit -m "Traducción completada" || exit 0
           git push
